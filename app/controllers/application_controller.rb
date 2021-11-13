@@ -6,4 +6,23 @@ class ApplicationController < Sinatra::Base
     { message: "Good luck with your project!" }.to_json
   end
 
+  get '/items' do
+
+  items = Item.all
+
+  items.to_json
+  end
+
+  get '/items/:id' do
+    items = Item.find_by(id: params[:id])
+
+    items.to_json
+  end
+
+  get '/carts' do 
+    carts = Cart.all
+
+    carts.to_json
+  end
+
 end
